@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:padding="25dp"
+    android:background="@drawable/background">
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/sTema"
+        android:layout_centerHorizontal="true"
+        android:text="@string/pocetna_start" 
+        android:layout_marginBottom="20dp"
+        android:background="#cccccc"/>
+
+    <Spinner
+        android:id="@+id/sTema"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnListaIgraca"
+        android:layout_marginBottom="20dp"
+        android:entries="@array/pocetna_teme"
+        android:background="#cccccc"
+        android:padding="15dp"
+        />
+    
+    <Button
+        android:id="@+id/btnListaIgraca"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnIzlaz"
+        android:layout_marginBottom="20dp"
+        android:text="@string/pocetna_lista"
+        android:background="#cccccc" />
+    
+    <Button
+        android:id="@+id/btnIzlaz"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:text="@string/pocetna_izlaz"
+        android:background="#cccccc" />
+
+
+</RelativeLayout>
