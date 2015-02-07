@@ -2,31 +2,12 @@
 <resources>
 
     <string name="app_name">TicTacToe</string>
-    <string name="action_settings">Postavke</string>    
-
-    <string name="pocetna_start">Start</string>
-     <string-array name="pocetna_teme">
-        <item>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Tema1</item>
-        <item>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Tema2</item>
- 	</string-array>
- 	<string name="pocetna_lista">Lista igraca</string>
-    <string name="pocetna_izlaz">Izlaz</string>
-    
-    <string name="postavke_tipIgre">Tip Igre</string>
-    <string name="postavke_igrac1">Igrac X</string>
-    <string name="postavke_igrac2">Igrac O</string>
-    <string name="postavke_hint">Ime</string>
-    <string name="postavke_zapocni">Zapocni</string>
-    <string-array name="postavke_izborTipa">
-        <item>Igrac vs. Igrac</item>
-        <item>Igrac vs. PC (lagano)</item>
-        <item>Igrac vs. PC (teško)</item>
- 	</string-array>
-    
-    <string name="igra_igrac1">Igrac X</string>
-    <string name="igra_igrac2">Igrac O</string>
-    
-    <string name="lista_naslov">Top Lista igraca</string>
-    
+    <string name="pocetni_meni">Početni meni</string>
+    <string name="izlaz">Izlaz</string>
+    <string name="igraci">Igrači</string>
+    <string name="igrac_hint">Naziv igrača</string>
+    <string name="igrac_dodaj">Dodaj igrača</string>
+    <string name="prazno"></string>
+    <string name="action_settings">Settings</string>
 
 </resources>
