@@ -11,29 +11,21 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/pocetni_meni" />
+        android:text="@string/postavke_igre" />
     
-    <Button 
-        android:id="@+id/btnStart"
-        android:text="@string/start"
+    <Spinner 
+        android:id="@+id/spPrviIgrac"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     
     <Spinner 
-        android:id="@+id/spTema"
-        android:entries="@array/teme"
+        android:id="@+id/spDrugiIgrac"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     
 	<Button 
-        android:id="@+id/btnIgraci"
-        android:text="@string/igraci"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    
-    <Button 
-        android:id="@+id/btnIzlaz"
-        android:text="@string/izlaz"
+        android:id="@+id/btnZapocni"
+        android:text="@string/zapocni"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

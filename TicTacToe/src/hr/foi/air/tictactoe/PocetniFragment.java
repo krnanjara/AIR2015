@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Spinner;
 
 /**
  * PocetniFragment sadrzi gumbe pocetnog izbornika
@@ -28,22 +29,46 @@ public class PocetniFragment extends Fragment implements OnClickListener{
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
+		Button btnStart = (Button) getActivity().findViewById(R.id.btnStart);
 		Button btnIgraci = (Button) getActivity().findViewById(R.id.btnIgraci);
 		Button btnIzlaz = (Button) getActivity().findViewById(R.id.btnIzlaz);
 		
+		btnStart.setOnClickListener(this);
 		btnIgraci.setOnClickListener(this);
 		btnIzlaz.setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View v) {
-		switch(v.getId()){
+		FragmentTransaction fragmentTransakcija;
+		switch(v.getId()) {
+		case R.id.btnStart: // kliknut je gumb za pocetak igre
+			// pohranjujemo odabir teme u radne parametre
+			Spinner spTema = (Spinner) getActivity().findViewById(R.id.spTema);
+			Bundle radniParametri = getActivity().getIntent().getExtras();
+			radniParametri.putString(getResources().getString(R.string.parametarTema), 
+					spTema.getSelectedItem().toString());
+			getActivity().getIntent().putExtras(radniParametri);
+			
+			// radimo tranziciju fragmenta
+			PostavkeFragment postavkeFragment = (PostavkeFragment)
+				getFragmentManager().findFragmentById(R.layout.fragment_postavke);
+			if(postavkeFragment == null) { // ako jos nije bio pozvan
+				postavkeFragment = new PostavkeFragment();
+			}
+			fragmentTransakcija = getFragmentManager().beginTransaction();
+			fragmentTransakcija.replace(R.id.container, postavkeFragment);
+			fragmentTransakcija.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+			fragmentTransakcija.addToBackStack(null); // omogucava vracanje Back tipkom
+			fragmentTransakcija.commit();
+			break;
 		case R.id.btnIgraci: // kliknut je gumb za upravljanje igracima
-			IgraciFragment igraciFragment = (IgraciFragment) getFragmentManager().findFragmentById(R.layout.fragment_igraci);
+			IgraciFragment igraciFragment = (IgraciFragment)
+				getFragmentManager().findFragmentById(R.layout.fragment_igraci);
 			if(igraciFragment == null){ // ako jos nije bio pozvan
 				igraciFragment = new IgraciFragment();
 			}
-			FragmentTransaction fragmentTransakcija = getFragmentManager().beginTransaction();
+			fragmentTransakcija = getFragmentManager().beginTransaction();
 			fragmentTransakcija.replace(R.id.container, igraciFragment);
 			fragmentTransakcija.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 			fragmentTransakcija.addToBackStack(null); // omogucava vracanje Back tipkom

@@ -1,6 +1,11 @@
 package hr.foi.air.tictactoe.model;
 
+import hr.foi.air.tictactoe.R;
+
 import java.util.ArrayList;
+
+import android.app.Activity;
+import android.content.res.Resources;
 
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
@@ -9,7 +14,7 @@ import com.activeandroid.query.Select;
 
 @Table(name = "Igraci")
 public class Igrac extends Model {
-	
+
 	@Column(name = "Naziv")
 	public String naziv;
 	
@@ -23,10 +28,11 @@ public class Igrac extends Model {
 	 * @param naziv igraca
 	 * @return false ako ne postoji, true inace
 	 */
-	public static boolean igracPostoji(String naziv) {
+	public static boolean igracPostoji(String naziv, Activity kontekst) {
+		Resources resursi = kontekst.getResources();
 		Igrac igrac = new Select()
 			.from(Igrac.class)
-			.where("Naziv = ?", naziv)
+			.where(resursi.getString(R.string.where_kriterij), naziv)
 			.executeSingle();
 		if(igrac == null) {
 			return false;
@@ -38,18 +44,35 @@ public class Igrac extends Model {
 	 * Priprema high score listu
 	 * @return lista stringova oblika: poredak. [igrac] bodovi
 	 */
-	public static ArrayList<String> sortiraniPopisIgracaBodova() {
+	public static ArrayList<String> sortiraniPopisIgracaBodova(Activity kontekst) {
+		Resources resursi = kontekst.getResources();
 		ArrayList<String> popis = new ArrayList<String>();
 		ArrayList<Igrac> igraci = new Select()
 			.from(Igrac.class)
-			.orderBy("Bodovi ASC")
+			.orderBy(resursi.getString(R.string.sortiranje_kriterij))
 			.execute();
 		int i = 0;
 		for(Igrac igrac : igraci) {
 			i += 1;
-			popis.add(i + ": [" + igrac.naziv + "] " + igrac.bodovi);
+			popis.add(String.format(
+					resursi.getString(R.string.format_popis), i, igrac.naziv, igrac.bodovi));
 		}
 		return popis;
+	}
+	
+	/**
+	 * Priprema listu igraca
+	 * @return lista stringova oblika: igrac
+	 */
+	public static ArrayList<String> popisIgraca() {
+		ArrayList<String> popis = new ArrayList<String>();
+		ArrayList<Igrac> igraci = new Select()
+			.from(Igrac.class)
+			.execute();
+		for(Igrac igrac : igraci) {
+			popis.add(igrac.naziv);
+		}
+		return popis;	
 	}
 	
 }

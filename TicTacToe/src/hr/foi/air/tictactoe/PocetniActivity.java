@@ -16,6 +16,22 @@ public class PocetniActivity extends Activity {
                     .add(R.id.container, new PocetniFragment())
                     .commit();
         }
+        inicijalizirajPostavke();
+    }
+    
+    /**
+     * Inicijalizira postavke koje ce se koristiti u aplikaciji za
+     * prosljedjivanje parametara medju fragmentima tokom rada
+     * aplikacije
+     */
+    private void inicijalizirajPostavke() {
+    	if(getIntent().getExtras() == null) { // ne postoje jos, pa ce biti kreirane
+        	Bundle radniParametri = new Bundle();
+            radniParametri.putString(
+            		getResources().getString(R.string.parametarKreirano),
+            		getResources().getString(R.string.parametarIstina));
+            getIntent().putExtras(radniParametri);
+    	}
     }
 
 

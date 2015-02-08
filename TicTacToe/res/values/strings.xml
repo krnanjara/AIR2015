@@ -2,12 +2,26 @@
 <resources>
 
     <string name="app_name">TicTacToe</string>
+    <string name="action_settings">Settings</string>
     <string name="pocetni_meni">Početni meni</string>
+    <string name="start">Start</string>
     <string name="izlaz">Izlaz</string>
     <string name="igraci">Igrači</string>
     <string name="igrac_hint">Naziv igrača</string>
     <string name="igrac_dodaj">Dodaj igrača</string>
     <string name="prazno"></string>
-    <string name="action_settings">Settings</string>
-
+    <string name="format_popis">%1$d: [%2$s] %3$d</string>
+    <string name="where_kriterij"></string>
+    <string name="sortiranje_kriterij">Bodovi ASC</string>
+    <string name="postavke_igre">Postavke igre</string>
+    <string name="zapocni">Započni</string>
+	<string-array name="teme">
+	    <item>Tema 1</item>
+	    <item>Tema 2</item>
+	</string-array>
+	<string name="parametarIstina">1</string>
+	<string name="parametarKreirano">kreiran</string>
+	<string name="parametarTema">tema</string>
+	<string name="parametarIgracPrvi">igrac1</string>
+	<string name="parametarIgracDrugi">igrac2</string>
 </resources>

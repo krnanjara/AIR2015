@@ -39,7 +39,7 @@ public class IgraciFragment extends Fragment implements OnClickListener {
 	 * Osvjezava ListView s popisom igraca
 	 */
 	private void osvjeziPopis() {
-		List<String> igraciUBazi = Igrac.sortiraniPopisIgracaBodova();
+		List<String> igraciUBazi = Igrac.sortiraniPopisIgracaBodova(getActivity());
 		ArrayAdapter<String> adapter =
 				new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, igraciUBazi);
 		ListView lvListaIgraca = (ListView) getActivity().findViewById(R.id.lvListaIgraca);
@@ -55,7 +55,7 @@ public class IgraciFragment extends Fragment implements OnClickListener {
 			if(nazivIgraca.trim().isEmpty() == true) {
 				return;
 			}		
-			if(Igrac.igracPostoji(nazivIgraca) == false) {
+			if(Igrac.igracPostoji(nazivIgraca, getActivity()) == false) {
 				Igrac igrac = new Igrac();
 				igrac.naziv = nazivIgraca;
 				igrac.bodovi = 0;
