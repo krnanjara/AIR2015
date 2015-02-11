@@ -24,4 +24,8 @@
 	<string name="parametarTema">tema</string>
 	<string name="parametarIgracPrvi">igrac1</string>
 	<string name="parametarIgracDrugi">igrac2</string>
+	<string name="pobjeda">Pobjeda: </string>
+	<string name="nerijeseno">Neriješeno</string>
+	<string name="krizic">X</string>
+	<string name="kruzic">O</string>
 </resources>
