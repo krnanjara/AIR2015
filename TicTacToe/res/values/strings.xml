@@ -11,8 +11,8 @@
     <string name="igrac_dodaj">Dodaj igrača</string>
     <string name="prazno"></string>
     <string name="format_popis">%1$d: [%2$s] %3$d</string>
-    <string name="where_kriterij"></string>
-    <string name="sortiranje_kriterij">Bodovi ASC</string>
+    <string name="where_kriterij">Naziv = ?</string>
+    <string name="sortiranje_kriterij">Bodovi DESC</string>
     <string name="postavke_igre">Postavke igre</string>
     <string name="zapocni">Započni</string>
 	<string-array name="teme">
@@ -24,8 +24,11 @@
 	<string name="parametarTema">tema</string>
 	<string name="parametarIgracPrvi">igrac1</string>
 	<string name="parametarIgracDrugi">igrac2</string>
+	<string name="sharedPrefRjecnikIgraci">igraci</string>
 	<string name="pobjeda">Pobjeda: </string>
 	<string name="nerijeseno">Neriješeno</string>
 	<string name="krizic">X</string>
 	<string name="kruzic">O</string>
+	<string name="racunaloLagano">Računalo Lagano</string>
+	<string name="racunaloTesko">Računalo Teško</string>
 </resources>

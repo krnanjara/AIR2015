@@ -6,7 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="hr.foi.air.tictactoe.PocetniFragment" >
+    tools:context="hr.foi.air.tictactoe.PocetniFragment"
+    android:orientation="vertical" >
 
     <TextView
         android:layout_width="wrap_content"
@@ -22,11 +23,11 @@
         android:id="@+id/spDrugiIgrac"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    
-	<Button 
-        android:id="@+id/btnZapocni"
-        android:text="@string/zapocni"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
+	<Button
+	    android:id="@+id/btnZapocni"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/zapocni" />
 
 </LinearLayout>

@@ -6,6 +6,8 @@ import java.util.List;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,6 +50,65 @@ public class PostavkeFragment extends Fragment implements OnClickListener{
 		Spinner spDrugiIgrac = (Spinner) getActivity().findViewById(R.id.spDrugiIgrac);
 		spPrviIgrac.setAdapter(adapter);
 		spDrugiIgrac.setAdapter(adapter);
+		
+		ucitajOdaberiIgraceOdZadnjiPut();
+	}
+	
+	/**
+	 * Provjerava jesu li odabrani igraci dozvoljeni. Npr. nije dozvoljeno igrati sam protiv sebe
+	 * @param prviIgrac koji je odabran (X)
+	 * @param drugiIgrac koji je odabran (O)
+	 * @return true ako je sve ok, inace false
+	 */
+	private boolean provjeriOdabraneIgrace(String prviIgrac, String drugiIgrac) {
+		if(prviIgrac.equals(drugiIgrac) == true) {
+			return false;
+		}
+		if(prviIgrac.equals(getResources().getString(R.string.racunaloLagano)) == true &&
+				drugiIgrac.equals(getResources().getString(R.string.racunaloTesko)) == true) {
+			return false;
+		}
+		if(prviIgrac.equals(getResources().getString(R.string.racunaloTesko)) == true &&
+				drugiIgrac.equals(getResources().getString(R.string.racunaloLagano)) == true) {
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * Odabire u spinnerima igrace od zadnje igre (ukoliko postoji zapis)
+	 */
+	private void ucitajOdaberiIgraceOdZadnjiPut() {
+		SharedPreferences prefs = getActivity().getSharedPreferences(getResources().getString(R.string.sharedPrefRjecnikIgraci), 0);
+		String prviIgrac = prefs.getString(getResources().getString(R.string.parametarIgracPrvi), getResources().getString(R.string.racunaloTesko));
+		String drugiIgrac = prefs.getString(getResources().getString(R.string.parametarIgracDrugi), getResources().getString(R.string.racunaloTesko));
+		Spinner spPrviIgrac = (Spinner) getActivity().findViewById(R.id.spPrviIgrac);
+		Spinner spDrugiIgrac = (Spinner) getActivity().findViewById(R.id.spDrugiIgrac);
+		for(int i = 0; i < spPrviIgrac.getCount(); i++) {
+			if(spPrviIgrac.getItemAtPosition(i).toString().equals(prviIgrac) == true) {
+				spPrviIgrac.setSelection(i);
+				break;
+			}
+		}
+		for(int i = 0; i < spDrugiIgrac.getCount(); i++) {
+			if(spDrugiIgrac.getItemAtPosition(i).toString().equals(drugiIgrac) == true) {
+				spDrugiIgrac.setSelection(i);
+				break;
+			}
+		}
+	}
+	
+	/**
+	 * Pamti igrace za sljedeci put
+	 * @param prviIgrac
+	 * @param drugiIgrac
+	 */
+	private void zapamtiIgraceZaSljedeciPut(String prviIgrac, String drugiIgrac) {
+		SharedPreferences prefs = getActivity().getSharedPreferences(getResources().getString(R.string.sharedPrefRjecnikIgraci), 0);
+		Editor editor = prefs.edit();
+		editor.putString(getResources().getString(R.string.parametarIgracPrvi), prviIgrac);
+		editor.putString(getResources().getString(R.string.parametarIgracDrugi), drugiIgrac);
+		editor.commit();
 	}
 	
 	@Override
@@ -59,6 +120,11 @@ public class PostavkeFragment extends Fragment implements OnClickListener{
 			Spinner spDrugiIgrac = (Spinner) getActivity().findViewById(R.id.spDrugiIgrac);
 			String prviIgrac = spPrviIgrac.getSelectedItem().toString();
 			String drugiIgrac = spDrugiIgrac.getSelectedItem().toString();
+			if(provjeriOdabraneIgrace(prviIgrac, drugiIgrac) == false) {
+				return; // ignoriramo nedozvoljene odabire
+			}
+			zapamtiIgraceZaSljedeciPut(prviIgrac, drugiIgrac);
+			
 			Bundle radniParametri = getActivity().getIntent().getExtras();
 			radniParametri.putString(getResources().getString(R.string.parametarIgracPrvi), prviIgrac);
 			radniParametri.putString(getResources().getString(R.string.parametarIgracDrugi), drugiIgrac);

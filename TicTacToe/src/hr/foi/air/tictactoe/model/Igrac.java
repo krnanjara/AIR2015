@@ -30,9 +30,10 @@ public class Igrac extends Model {
 	 */
 	public static boolean igracPostoji(String naziv, Activity kontekst) {
 		Resources resursi = kontekst.getResources();
+		String where_kriterij = resursi.getString(R.string.where_kriterij);
 		Igrac igrac = new Select()
 			.from(Igrac.class)
-			.where(resursi.getString(R.string.where_kriterij), naziv)
+			.where(where_kriterij, naziv)
 			.executeSingle();
 		if(igrac == null) {
 			return false;
@@ -75,4 +76,18 @@ public class Igrac extends Model {
 		return popis;	
 	}
 	
+	/**
+	 * Uvecava bodove (za 1) zadanom igracu
+	 * @param naziv igraca kojem ce se povecati bodovi
+	 */
+	public static void uvecajBodove(String naziv, Activity kontekst) {
+		Resources resursi = kontekst.getResources();
+		String where_kriterij = resursi.getString(R.string.where_kriterij);
+		Igrac igrac = new Select()
+			.from(Igrac.class)
+			.where(where_kriterij, naziv)
+			.executeSingle();
+		igrac.bodovi = igrac.bodovi + 1;
+		igrac.save();
+	}
 }

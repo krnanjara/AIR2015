@@ -1,5 +1,6 @@
 package hr.foi.air.tictactoe;
 
+import hr.foi.air.tictactoe.model.Igrac;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -36,6 +37,28 @@ public class PocetniFragment extends Fragment implements OnClickListener{
 		btnStart.setOnClickListener(this);
 		btnIgraci.setOnClickListener(this);
 		btnIzlaz.setOnClickListener(this);
+		
+		provjeriDodajRacunalneIgrace();
+	}
+	
+	/**
+	 * Metoda dodaje racunalne igrace ukoliko ne postoje vec u bazi podataka
+	 */
+	private void provjeriDodajRacunalneIgrace() {
+		String naziv = getResources().getString(R.string.racunaloTesko);
+		if(Igrac.igracPostoji(naziv, getActivity()) == false) {
+			Igrac igrac = new Igrac();
+			igrac.naziv = naziv;
+			igrac.bodovi = 0;
+			igrac.save();
+		}
+		naziv = getResources().getString(R.string.racunaloLagano);
+		if(Igrac.igracPostoji(naziv, getActivity()) == false) {
+			Igrac igrac = new Igrac();
+			igrac.naziv = naziv;
+			igrac.bodovi = 0;
+			igrac.save();
+		}
 	}
 
 	@Override

@@ -2,7 +2,11 @@ package hr.foi.air.tictactoe;
 
 import hr.foi.air.tictactoe.logika.Igra;
 import hr.foi.air.tictactoe.logika.Potez;
+import hr.foi.air.tictactoe.logika.Racunalo;
+import hr.foi.air.tictactoe.logika.RacunaloLagano;
+import hr.foi.air.tictactoe.logika.RacunaloTesko;
 import hr.foi.air.tictactoe.logika.StanjeIgre;
+import hr.foi.air.tictactoe.model.Igrac;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -55,8 +59,29 @@ public class IgraFragment extends Fragment implements Igra, OnClickListener {
 		gumb = (Button) getActivity().findViewById(R.id.btnIgra9);
 		gumb.setOnClickListener(this);
 		inicijalizirajIgru();
+		
+		racunalo = null;
+		if(prviIgrac.equals(getResources().getString(R.string.racunaloLagano))) {
+			racunalo = new RacunaloLagano();
+			racunalo.postaviPotez(Potez.igrac1);
+			onClick(getActivity().findViewById(R.id.btnIgra1)); // umjesto null bezveze poslan gumb1
+		}
+		if(prviIgrac.equals(getResources().getString(R.string.racunaloTesko))) {
+			racunalo = new RacunaloTesko();
+			racunalo.postaviPotez(Potez.igrac1);
+			onClick(getActivity().findViewById(R.id.btnIgra1)); // umjesto null bezveze poslan gumb1
+		}
+		if(drugiIgrac.equals(getResources().getString(R.string.racunaloLagano))) {
+			racunalo = new RacunaloLagano();
+			racunalo.postaviPotez(Potez.igrac2);
+		}
+		if(drugiIgrac.equals(getResources().getString(R.string.racunaloTesko))) {
+			racunalo = new RacunaloTesko();
+			racunalo.postaviPotez(Potez.igrac2);
+		}
 	}
 	
+	private Racunalo racunalo;
 	private StanjeIgre stanjeIgre;
 	private Potez[][] potezi;
 	
@@ -79,55 +104,73 @@ public class IgraFragment extends Fragment implements Igra, OnClickListener {
 		switch(pozicija) {
 		case 1:
 			if(potezi[0][0] != Potez.neodigran) {
-				throw new IndexOutOfBoundsException();
+				if(potez != Potez.neodigran) {
+					throw new IndexOutOfBoundsException();
+				}
 			}
 			potezi[0][0] = potez;
 			break;
 		case 2:
 			if(potezi[0][1] != Potez.neodigran) {
-				throw new IndexOutOfBoundsException();
+				if(potez != Potez.neodigran) {
+					throw new IndexOutOfBoundsException();
+				}
 			}
 			potezi[0][1] = potez;
 			break;
 		case 3:
 			if(potezi[0][2] != Potez.neodigran) {
-				throw new IndexOutOfBoundsException();
+				if(potez != Potez.neodigran) {
+					throw new IndexOutOfBoundsException();
+				}
 			}
 			potezi[0][2] = potez;
 			break;
 		case 4:
 			if(potezi[1][0] != Potez.neodigran) {
-				throw new IndexOutOfBoundsException();
+				if(potez != Potez.neodigran) {
+					throw new IndexOutOfBoundsException();
+				}
 			}
 			potezi[1][0] = potez;
 			break;
 		case 5:
 			if(potezi[1][1] != Potez.neodigran) {
-				throw new IndexOutOfBoundsException();
+				if(potez != Potez.neodigran) {
+					throw new IndexOutOfBoundsException();
+				}
 			}
 			potezi[1][1] = potez;
 			break;
 		case 6:
 			if(potezi[1][2] != Potez.neodigran) {
-				throw new IndexOutOfBoundsException();
+				if(potez != Potez.neodigran) {
+					throw new IndexOutOfBoundsException();
+				}
 			}
 			potezi[1][2] = potez;
 			break;
 		case 7:
 			if(potezi[2][0] != Potez.neodigran) {
-				throw new IndexOutOfBoundsException();
+				if(potez != Potez.neodigran) {
+					throw new IndexOutOfBoundsException();
+				}
 			}
 			potezi[2][0] = potez;
 			break;
 		case 8:
 			if(potezi[2][1] != Potez.neodigran) {
-				throw new IndexOutOfBoundsException();
+				if(potez != Potez.neodigran) {
+					throw new IndexOutOfBoundsException();
+				}
 			}
 			potezi[2][1] = potez;
 			break;
 		case 9:
 			if(potezi[2][2] != Potez.neodigran) {
-				throw new IndexOutOfBoundsException();
+				if(potez != Potez.neodigran) {
+					throw new IndexOutOfBoundsException();
+				}
 			}
 			potezi[2][2] = potez;
 			break;
@@ -263,6 +306,9 @@ public class IgraFragment extends Fragment implements Igra, OnClickListener {
 		return stanjeIgre;
 	}
 	
+	/**
+	 * Metoda azurira prikaz tako da odgovara stanju matrice potezi[][]
+	 */
 	private void osvjeziPrikaz() {
 		Button gumb;
 		// prvi gumb
@@ -345,25 +391,36 @@ public class IgraFragment extends Fragment implements Igra, OnClickListener {
 		case R.id.btnIgra9: pozicija = 9; break;
 		}
 		
+		boolean nekaRacunaloOdigra = false;
+		
 		try {
 			Potez potez = Potez.neodigran;
 			if(dohvatiStanjeIgre() == StanjeIgre.naReduJeIgrac1) {
 				potez = Potez.igrac1;
+				
 			}
 			if(dohvatiStanjeIgre() == StanjeIgre.naReduJeIgrac2) {
 				potez = Potez.igrac2;
 			}
-			postaviVrijednost(pozicija, potez);
+			
+			if(racunalo != null && racunalo.dohvatiPotez() == potez) {
+				postaviVrijednost(racunalo.odigrajPotez(this), racunalo.dohvatiPotez());
+			}
+			else {
+				postaviVrijednost(pozicija, potez);
+				nekaRacunaloOdigra = true;
+			}
 			osvjeziPrikaz();
+			
+			dohvatiStanjeIgre();
 			
 			// promjena igraca
 			if(stanjeIgre == StanjeIgre.naReduJeIgrac1) {
 				stanjeIgre = StanjeIgre.naReduJeIgrac2;
 			}
-			else if(stanjeIgre == StanjeIgre.naReduJeIgrac2){
+			else if(stanjeIgre == StanjeIgre.naReduJeIgrac2) {
 				stanjeIgre = StanjeIgre.naReduJeIgrac1;
 			}
-			
 		}
 		catch(IndexOutOfBoundsException iznimka) {
 			// ignorira se slucaj nemoguceg poteza
@@ -374,13 +431,22 @@ public class IgraFragment extends Fragment implements Igra, OnClickListener {
 		if(dohvatiStanjeIgre() == StanjeIgre.pobjedaIgrac1) {
 			String prviIgrac = getActivity().getIntent().getExtras().getString(getResources().getString(R.string.parametarIgracPrvi));
 			tvPobjeda.setText(getResources().getString(R.string.pobjeda) + prviIgrac);
+			Igrac.uvecajBodove(prviIgrac, getActivity());
+			nekaRacunaloOdigra = false;
 		}
 		if(dohvatiStanjeIgre() == StanjeIgre.pobjedaIgrac2) {
 			String drugiIgrac = getActivity().getIntent().getExtras().getString(getResources().getString(R.string.parametarIgracDrugi));
 			tvPobjeda.setText(getResources().getString(R.string.pobjeda) + drugiIgrac);
+			Igrac.uvecajBodove(drugiIgrac, getActivity());
+			nekaRacunaloOdigra = false;
 		}
 		if(dohvatiStanjeIgre() == StanjeIgre.nerijeseno) {
 			tvPobjeda.setText(R.string.nerijeseno);
+			nekaRacunaloOdigra = false;
+		}
+		
+		if(nekaRacunaloOdigra == true && racunalo != null) {
+			onClick(v);
 		}
 	}
 }
