@@ -9,7 +9,7 @@ package hr.foi.air.tictactoe;
 
 public final class R {
     public static final class array {
-        public static final int teme=0x7f060000;
+        public static final int teme=0x7f070000;
     }
     public static final class attr {
     }
@@ -21,8 +21,8 @@ public final class R {
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
     
          */
-        public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
+        public static final int activity_horizontal_margin=0x7f060000;
+        public static final int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
@@ -67,32 +67,32 @@ public final class R {
         public static final int pocetni=0x7f080000;
     }
     public static final class string {
-        public static final int action_settings=0x7f050001;
-        public static final int app_name=0x7f050000;
-        public static final int format_popis=0x7f050009;
-        public static final int igrac_dodaj=0x7f050007;
-        public static final int igrac_hint=0x7f050006;
-        public static final int igraci=0x7f050005;
-        public static final int izlaz=0x7f050004;
-        public static final int krizic=0x7f050016;
-        public static final int kruzic=0x7f050017;
-        public static final int nerijeseno=0x7f050015;
-        public static final int parametarIgracDrugi=0x7f050012;
-        public static final int parametarIgracPrvi=0x7f050011;
-        public static final int parametarIstina=0x7f05000e;
-        public static final int parametarKreirano=0x7f05000f;
-        public static final int parametarTema=0x7f050010;
-        public static final int pobjeda=0x7f050014;
-        public static final int pocetni_meni=0x7f050002;
-        public static final int postavke_igre=0x7f05000c;
-        public static final int prazno=0x7f050008;
-        public static final int racunaloLagano=0x7f050018;
-        public static final int racunaloTesko=0x7f050019;
-        public static final int sharedPrefRjecnikIgraci=0x7f050013;
-        public static final int sortiranje_kriterij=0x7f05000b;
-        public static final int start=0x7f050003;
-        public static final int where_kriterij=0x7f05000a;
-        public static final int zapocni=0x7f05000d;
+        public static final int action_settings=0x7f040001;
+        public static final int app_name=0x7f040000;
+        public static final int format_popis=0x7f040009;
+        public static final int igrac_dodaj=0x7f040007;
+        public static final int igrac_hint=0x7f040006;
+        public static final int igraci=0x7f040005;
+        public static final int izlaz=0x7f040004;
+        public static final int krizic=0x7f040016;
+        public static final int kruzic=0x7f040017;
+        public static final int nerijeseno=0x7f040015;
+        public static final int parametarIgracDrugi=0x7f040012;
+        public static final int parametarIgracPrvi=0x7f040011;
+        public static final int parametarIstina=0x7f04000e;
+        public static final int parametarKreirano=0x7f04000f;
+        public static final int parametarTema=0x7f040010;
+        public static final int pobjeda=0x7f040014;
+        public static final int pocetni_meni=0x7f040002;
+        public static final int postavke_igre=0x7f04000c;
+        public static final int prazno=0x7f040008;
+        public static final int racunaloLagano=0x7f040018;
+        public static final int racunaloTesko=0x7f040019;
+        public static final int sharedPrefRjecnikIgraci=0x7f040013;
+        public static final int sortiranje_kriterij=0x7f04000b;
+        public static final int start=0x7f040003;
+        public static final int where_kriterij=0x7f04000a;
+        public static final int zapocni=0x7f04000d;
     }
     public static final class style {
         /** 
@@ -115,11 +115,33 @@ public final class R {
         res/values-v11/styles.xml on API 14+ devices.
     
  API 14 theme customizations can go here. 
+
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    
+
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        
+
+        Base application theme for API 11+. This theme completely replaces
+        AppBaseTheme from res/values/styles.xml on API 11+ devices.
+    
+ API 11 theme customizations can go here. 
+
+        Base application theme for API 14+. This theme completely replaces
+        AppBaseTheme from BOTH res/values/styles.xml and
+        res/values-v11/styles.xml on API 14+ devices.
+    
+ API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f050000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
+ Application theme. 
+ All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
+        public static final int AppTheme=0x7f050001;
     }
 }
