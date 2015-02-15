@@ -8,6 +8,7 @@ import hr.foi.air.tictactoe.logika.RacunaloTesko;
 import hr.foi.air.tictactoe.logika.StanjeIgre;
 import hr.foi.air.tictactoe.model.Igrac;
 import android.app.Fragment;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +31,7 @@ public class IgraFragment extends Fragment implements Igra, OnClickListener {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		//String tema = getActivity().getIntent().getExtras().getString(getResources().getString(R.string.parametarTema));
+		String tema = getActivity().getIntent().getExtras().getString(getResources().getString(R.string.parametarTema));
 		String prviIgrac = getActivity().getIntent().getExtras().getString(getResources().getString(R.string.parametarIgracPrvi));
 		String drugiIgrac = getActivity().getIntent().getExtras().getString(getResources().getString(R.string.parametarIgracDrugi));
 		
@@ -60,6 +61,12 @@ public class IgraFragment extends Fragment implements Igra, OnClickListener {
 		gumb.setOnClickListener(this);
 		inicijalizirajIgru();
 		
+		if(tema.equals(getResources().getStringArray(R.array.teme)[1]) == true) {
+			koristiSlikeZaGumbe = true;
+		}
+		else {
+			koristiSlikeZaGumbe = false;
+		}
 		racunalo = null;
 		if(prviIgrac.equals(getResources().getString(R.string.racunaloLagano))) {
 			racunalo = new RacunaloLagano();
@@ -81,6 +88,7 @@ public class IgraFragment extends Fragment implements Igra, OnClickListener {
 		}
 	}
 	
+	private boolean koristiSlikeZaGumbe;
 	private Racunalo racunalo;
 	private StanjeIgre stanjeIgre;
 	private Potez[][] potezi;
@@ -311,69 +319,139 @@ public class IgraFragment extends Fragment implements Igra, OnClickListener {
 	 */
 	private void osvjeziPrikaz() {
 		Button gumb;
-		// prvi gumb
-		gumb = (Button) getActivity().findViewById(R.id.btnIgra1);
-		switch(dohvatiVrijednost(1)) {
-		case neodigran: gumb.setText(R.string.prazno); break;
-		case igrac1:    gumb.setText(R.string.krizic); break;
-		case igrac2:    gumb.setText(R.string.kruzic); break;
+		if(koristiSlikeZaGumbe == true) {
+			// prvi gumb
+			gumb = (Button) getActivity().findViewById(R.id.btnIgra1);
+			Drawable ikona1 = getActivity().getResources().getDrawable(R.drawable.krizic);
+			Drawable ikona2 = getActivity().getResources().getDrawable(R.drawable.kruzic);
+			switch(dohvatiVrijednost(1)) {
+			case neodigran: break;
+			case igrac1:    gumb.setBackground(ikona1); break;
+			case igrac2:    gumb.setBackground(ikona2); break;
+			}
+			// drugi gumb
+			gumb = (Button) getActivity().findViewById(R.id.btnIgra2);
+			switch(dohvatiVrijednost(2)) {
+			case neodigran: break;
+			case igrac1:    gumb.setBackground(ikona1); break;
+			case igrac2:    gumb.setBackground(ikona2); break;
+			}
+			// treci gumb
+			gumb = (Button) getActivity().findViewById(R.id.btnIgra3);
+			switch(dohvatiVrijednost(3)) {
+			case neodigran: break;
+			case igrac1:    gumb.setBackground(ikona1); break;
+			case igrac2:    gumb.setBackground(ikona2); break;
+			}
+			// cetvrti gumb
+			gumb = (Button) getActivity().findViewById(R.id.btnIgra4);
+			switch(dohvatiVrijednost(4)) {
+			case neodigran: break;
+			case igrac1:    gumb.setBackground(ikona1); break;
+			case igrac2:    gumb.setBackground(ikona2); break;
+			}
+			// peti gumb
+			gumb = (Button) getActivity().findViewById(R.id.btnIgra5);
+			switch(dohvatiVrijednost(5)) {
+			case neodigran: break;
+			case igrac1:    gumb.setBackground(ikona1); break;
+			case igrac2:    gumb.setBackground(ikona2); break;
+			}
+			// sesti gumb
+			gumb = (Button) getActivity().findViewById(R.id.btnIgra6);
+			switch(dohvatiVrijednost(6)) {
+			case neodigran: break;
+			case igrac1:    gumb.setBackground(ikona1); break;
+			case igrac2:    gumb.setBackground(ikona2); break;
+			}
+			// sedmi gumb
+			gumb = (Button) getActivity().findViewById(R.id.btnIgra7);
+			switch(dohvatiVrijednost(7)) {
+			case neodigran: break;
+			case igrac1:    gumb.setBackground(ikona1); break;
+			case igrac2:    gumb.setBackground(ikona2); break;
+			}
+			// osmi gumb
+			gumb = (Button) getActivity().findViewById(R.id.btnIgra8);
+			switch(dohvatiVrijednost(8)) {
+			case neodigran: break;
+			case igrac1:    gumb.setBackground(ikona1); break;
+			case igrac2:    gumb.setBackground(ikona2); break;
+			}
+			// deveti gumb
+			gumb = (Button) getActivity().findViewById(R.id.btnIgra9);
+			switch(dohvatiVrijednost(9)) {
+			case neodigran: break;
+			case igrac1:    gumb.setBackground(ikona1); break;
+			case igrac2:    gumb.setBackground(ikona2); break;
+			}		
 		}
-		// drugi gumb
-		gumb = (Button) getActivity().findViewById(R.id.btnIgra2);
-		switch(dohvatiVrijednost(2)) {
-		case neodigran: gumb.setText(R.string.prazno); break;
-		case igrac1:    gumb.setText(R.string.krizic); break;
-		case igrac2:    gumb.setText(R.string.kruzic); break;
+		else {
+			// prvi gumb
+			gumb = (Button) getActivity().findViewById(R.id.btnIgra1);
+			switch(dohvatiVrijednost(1)) {
+			case neodigran: gumb.setText(R.string.prazno); break;
+			case igrac1:    gumb.setText(R.string.krizic); break;
+			case igrac2:    gumb.setText(R.string.kruzic); break;
+			}
+			// drugi gumb
+			gumb = (Button) getActivity().findViewById(R.id.btnIgra2);
+			switch(dohvatiVrijednost(2)) {
+			case neodigran: gumb.setText(R.string.prazno); break;
+			case igrac1:    gumb.setText(R.string.krizic); break;
+			case igrac2:    gumb.setText(R.string.kruzic); break;
+			}
+			// treci gumb
+			gumb = (Button) getActivity().findViewById(R.id.btnIgra3);
+			switch(dohvatiVrijednost(3)) {
+			case neodigran: gumb.setText(R.string.prazno); break;
+			case igrac1:    gumb.setText(R.string.krizic); break;
+			case igrac2:    gumb.setText(R.string.kruzic); break;
+			}
+			// cetvrti gumb
+			gumb = (Button) getActivity().findViewById(R.id.btnIgra4);
+			switch(dohvatiVrijednost(4)) {
+			case neodigran: gumb.setText(R.string.prazno); break;
+			case igrac1:    gumb.setText(R.string.krizic); break;
+			case igrac2:    gumb.setText(R.string.kruzic); break;
+			}
+			// peti gumb
+			gumb = (Button) getActivity().findViewById(R.id.btnIgra5);
+			switch(dohvatiVrijednost(5)) {
+			case neodigran: gumb.setText(R.string.prazno); break;
+			case igrac1:    gumb.setText(R.string.krizic); break;
+			case igrac2:    gumb.setText(R.string.kruzic); break;
+			}
+			// sesti gumb
+			gumb = (Button) getActivity().findViewById(R.id.btnIgra6);
+			switch(dohvatiVrijednost(6)) {
+			case neodigran: gumb.setText(R.string.prazno); break;
+			case igrac1:    gumb.setText(R.string.krizic); break;
+			case igrac2:    gumb.setText(R.string.kruzic); break;
+			}
+			// sedmi gumb
+			gumb = (Button) getActivity().findViewById(R.id.btnIgra7);
+			switch(dohvatiVrijednost(7)) {
+			case neodigran: gumb.setText(R.string.prazno); break;
+			case igrac1:    gumb.setText(R.string.krizic); break;
+			case igrac2:    gumb.setText(R.string.kruzic); break;
+			}
+			// osmi gumb
+			gumb = (Button) getActivity().findViewById(R.id.btnIgra8);
+			switch(dohvatiVrijednost(8)) {
+			case neodigran: gumb.setText(R.string.prazno); break;
+			case igrac1:    gumb.setText(R.string.krizic); break;
+			case igrac2:    gumb.setText(R.string.kruzic); break;
+			}
+			// deveti gumb
+			gumb = (Button) getActivity().findViewById(R.id.btnIgra9);
+			switch(dohvatiVrijednost(9)) {
+			case neodigran: gumb.setText(R.string.prazno); break;
+			case igrac1:    gumb.setText(R.string.krizic); break;
+			case igrac2:    gumb.setText(R.string.kruzic); break;
+			}		
 		}
-		// treci gumb
-		gumb = (Button) getActivity().findViewById(R.id.btnIgra3);
-		switch(dohvatiVrijednost(3)) {
-		case neodigran: gumb.setText(R.string.prazno); break;
-		case igrac1:    gumb.setText(R.string.krizic); break;
-		case igrac2:    gumb.setText(R.string.kruzic); break;
-		}
-		// cetvrti gumb
-		gumb = (Button) getActivity().findViewById(R.id.btnIgra4);
-		switch(dohvatiVrijednost(4)) {
-		case neodigran: gumb.setText(R.string.prazno); break;
-		case igrac1:    gumb.setText(R.string.krizic); break;
-		case igrac2:    gumb.setText(R.string.kruzic); break;
-		}
-		// peti gumb
-		gumb = (Button) getActivity().findViewById(R.id.btnIgra5);
-		switch(dohvatiVrijednost(5)) {
-		case neodigran: gumb.setText(R.string.prazno); break;
-		case igrac1:    gumb.setText(R.string.krizic); break;
-		case igrac2:    gumb.setText(R.string.kruzic); break;
-		}
-		// sesti gumb
-		gumb = (Button) getActivity().findViewById(R.id.btnIgra6);
-		switch(dohvatiVrijednost(6)) {
-		case neodigran: gumb.setText(R.string.prazno); break;
-		case igrac1:    gumb.setText(R.string.krizic); break;
-		case igrac2:    gumb.setText(R.string.kruzic); break;
-		}
-		// sedmi gumb
-		gumb = (Button) getActivity().findViewById(R.id.btnIgra7);
-		switch(dohvatiVrijednost(7)) {
-		case neodigran: gumb.setText(R.string.prazno); break;
-		case igrac1:    gumb.setText(R.string.krizic); break;
-		case igrac2:    gumb.setText(R.string.kruzic); break;
-		}
-		// osmi gumb
-		gumb = (Button) getActivity().findViewById(R.id.btnIgra8);
-		switch(dohvatiVrijednost(8)) {
-		case neodigran: gumb.setText(R.string.prazno); break;
-		case igrac1:    gumb.setText(R.string.krizic); break;
-		case igrac2:    gumb.setText(R.string.kruzic); break;
-		}
-		// deveti gumb
-		gumb = (Button) getActivity().findViewById(R.id.btnIgra9);
-		switch(dohvatiVrijednost(9)) {
-		case neodigran: gumb.setText(R.string.prazno); break;
-		case igrac1:    gumb.setText(R.string.krizic); break;
-		case igrac2:    gumb.setText(R.string.kruzic); break;
-		}		
+
 	}
 	
 	@Override

@@ -28,8 +28,8 @@ public class RacunaloTesko implements Racunalo {
 		
 		if(igra.dohvatiVrijednost(1) == Potez.neodigran) return 1;
 		if(igra.dohvatiVrijednost(3) == Potez.neodigran) return 3;
-		if(igra.dohvatiVrijednost(9) == Potez.neodigran) return 9;
 		if(igra.dohvatiVrijednost(7) == Potez.neodigran) return 7;
+		if(igra.dohvatiVrijednost(9) == Potez.neodigran) return 9;
 		
 		if(igra.dohvatiVrijednost(2) == Potez.neodigran) return 2;
 		if(igra.dohvatiVrijednost(6) == Potez.neodigran) return 6;
