@@ -7,32 +7,41 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="hr.foi.air.tictactoe.PocetniFragment"
-    android:background="@drawable/pozadina" 
+    android:background="@drawable/pozadina"
+    android:gravity="center" 
     android:orientation="vertical" >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#cccccc"
+        android:padding="15dp"
+        android:layout_margin="20dp"
         android:text="@string/postavke_igre" />
     
     <Spinner 
         android:id="@+id/spPrviIgrac"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#cccccc" />
+        android:background="#cccccc"
+        android:padding="15dp"
+        android:layout_margin="20dp" />
     
     <Spinner 
         android:id="@+id/spDrugiIgrac"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#cccccc" />
+        android:background="#cccccc"
+        android:padding="15dp"
+        android:layout_margin="20dp" />
 
 	<Button
 	    android:id="@+id/btnZapocni"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:text="@string/zapocni"
-	    android:background="#cccccc" />
+	    android:background="#cccccc"
+	    android:padding="15dp"
+        android:layout_margin="20dp" />
 
 </LinearLayout>
