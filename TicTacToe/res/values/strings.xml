@@ -16,8 +16,8 @@
     <string name="postavke_igre">Postavke igre</string>
     <string name="zapocni">Započni</string>
 	<string-array name="teme">
-	    <item>Tema 1</item>
-	    <item>Tema 2</item>
+	    <item>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Tema 1</item>
+	    <item>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Tema 2</item>
 	</string-array>
 	<string name="parametarIstina">1</string>
 	<string name="parametarKreirano">kreiran</string>

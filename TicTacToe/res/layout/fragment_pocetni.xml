@@ -14,9 +14,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#cccccc"
-        android:padding="15dp"
-        android:layout_margin="20dp"
+        android:textColor="#cccccc"
+        android:padding="1dp"
+        android:layout_margin="1dp"
         android:text="@string/pocetni_meni" />
     
     <Button 
@@ -24,8 +24,9 @@
         android:text="@string/start"
         android:background="#cccccc"
         android:padding="15dp"
-        android:layout_margin="20dp"
-        android:layout_width="wrap_content"
+        android:layout_marginTop="170dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     
     <Spinner 
@@ -33,8 +34,8 @@
         android:entries="@array/teme"
         android:background="#cccccc"
         android:padding="15dp"
-        android:layout_margin="20dp"
-        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     
 	<Button 
@@ -42,8 +43,8 @@
         android:text="@string/igraci"
         android:background="#cccccc"
         android:padding="15dp"
-        android:layout_margin="20dp"
-        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
     
     <Button 
@@ -51,8 +52,8 @@
         android:text="@string/izlaz"
         android:background="#cccccc"
         android:padding="15dp"
-        android:layout_margin="20dp"
-        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 
 </LinearLayout>
