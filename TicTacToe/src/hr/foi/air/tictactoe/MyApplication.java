@@ -15,4 +15,5 @@ public class MyApplication extends Application {
 		 */
 		ActiveAndroid.initialize(this);
 	}
+	
 }
